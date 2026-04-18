@@ -3,127 +3,176 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENTER</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<title>ENTER LOVE 주점</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --pink: #FFB6C1;
-    --pink-deep: #FF8FA3;
-    --pink-light: #FFF0F5;
-    --pink-mid: #FFD6DF;
+    --pink: #FF6B9D;
+    --pink-deep: #E91E8C;
+    --pink-light: #FFF0F8;
+    --pink-mid: #FFB3D9;
+    --purple: #9C27B0;
+    --coral: #FF5252;
+    --yellow: #FFD600;
     --white: #ffffff;
-    --text: #3a3a3a;
-    --text-sub: #999;
+    --text: #2a2a2a;
+    --text-sub: #888;
     --radius: 18px;
-    --shadow: 0 4px 18px rgba(255,143,163,0.15);
+    --shadow: 0 4px 20px rgba(233,30,140,0.13);
   }
 
   body {
     font-family: 'Noto Sans KR', sans-serif;
-    background: var(--pink-light);
+    background: linear-gradient(135deg, #FFF0F8 0%, #F3E5F5 100%);
     color: var(--text);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
 
   header {
-    background: var(--white);
-    border-bottom: 1px solid var(--pink-mid);
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    padding: 16px 28px;
+    display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 12px rgba(255,182,193,0.15);
+    box-shadow: 0 4px 20px rgba(233,30,140,0.3);
   }
-  .logo { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--pink-deep); letter-spacing: 3px; }
-  .logo span { color: var(--pink); }
-  .header-sub { font-size: 0.75rem; color: var(--text-sub); }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: white; letter-spacing: 3px; }
+  .logo span { color: var(--yellow); }
+  .header-sub { font-size: 0.72rem; color: rgba(255,255,255,0.85); text-align: right; line-height: 1.5; }
 
-  .layout {
-    max-width: 760px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 28px 24px 100px;
-  }
+  .layout { max-width: 800px; margin: 0 auto; width: 100%; padding: 24px 20px 110px; }
 
+  /* 섹션 라벨 */
   .section-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
-    color: var(--pink-deep); text-transform: uppercase;
-    margin: 0 0 12px 4px;
-    display: flex; align-items: center; gap: 8px;
+    font-size: 1rem; font-weight: 900; letter-spacing: 1px;
+    color: white; margin: 0 0 14px;
+    display: flex; align-items: center; gap: 10px;
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    padding: 8px 16px; border-radius: 99px;
+    box-shadow: 0 3px 12px rgba(233,30,140,0.25);
+    width: fit-content;
   }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--pink-mid); }
 
+  /* 규칙 박스 */
+  .rules-box {
+    background: white; border-radius: var(--radius);
+    border: 2px solid var(--pink-mid);
+    padding: 16px 20px; display: flex; flex-direction: column; gap: 12px;
+    box-shadow: var(--shadow); margin-bottom: 28px;
+  }
+  .rule-item { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; font-weight: 600; }
+  .rule-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-deep), var(--purple));
+    color: white; font-size: 0.75rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  /* 메뉴 그리드 */
   .menu-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px; margin-bottom: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 14px; margin-bottom: 32px;
   }
 
   .menu-card {
-    background: var(--white); border-radius: var(--radius);
+    background: white; border-radius: var(--radius);
     overflow: hidden; box-shadow: var(--shadow);
     cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
     border: 2px solid transparent;
   }
-  .menu-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255,143,163,0.25); border-color: var(--pink); }
+  .menu-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(233,30,140,0.22); border-color: var(--pink); }
   .menu-card:active { transform: scale(0.97); }
   .menu-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
   .card-body { padding: 12px 14px 14px; }
-  .card-name { font-weight: 700; font-size: 0.9rem; }
-  .card-desc { font-size: 0.72rem; color: var(--text-sub); margin-top: 3px; }
+  .card-name { font-weight: 700; font-size: 0.92rem; }
+  .card-desc { font-size: 0.72rem; color: var(--text-sub); margin-top: 4px; line-height: 1.4; }
   .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
-  .card-price { font-weight: 700; font-size: 0.95rem; color: var(--pink-deep); }
+  .card-price { font-weight: 900; font-size: 1rem; color: var(--pink-deep); }
   .card-add {
     width: 30px; height: 30px; background: var(--pink-light);
-    border: 1.5px solid var(--pink); border-radius: 50%;
+    border: 2px solid var(--pink); border-radius: 50%;
     color: var(--pink-deep); font-size: 1.2rem;
-    line-height: 28px; text-align: center; cursor: pointer;
+    line-height: 26px; text-align: center; cursor: pointer;
     transition: background 0.15s; flex-shrink: 0;
   }
   .card-add:hover { background: var(--pink); color: white; }
 
-  /* ── 하단 바 ── */
+  /* 세트 메뉴 카드 */
+  .set-grid {
+    display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;
+  }
+  .set-card {
+    background: white; border-radius: var(--radius);
+    box-shadow: var(--shadow); cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 2px solid transparent;
+    overflow: hidden;
+  }
+  .set-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(233,30,140,0.22); border-color: var(--pink); }
+  .set-card:active { transform: scale(0.98); }
+  .set-header {
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    padding: 14px 18px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .set-name { font-weight: 900; font-size: 1.05rem; color: white; }
+  .set-price { font-weight: 900; font-size: 1.1rem; color: var(--yellow); }
+  .set-body { padding: 12px 18px 14px; }
+  .set-target { font-size: 0.8rem; color: var(--purple); font-weight: 700; margin-bottom: 6px; }
+  .set-content { font-size: 0.82rem; color: var(--text-sub); line-height: 1.5; }
+  .set-coupon {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(90deg, #FFD600, #FF9800);
+    color: #3a2000; font-size: 0.78rem; font-weight: 900;
+    padding: 5px 12px; border-radius: 99px;
+    margin-top: 10px; letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(255,152,0,0.35);
+  }
+  .set-add {
+    float: right; margin-top: 10px;
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    color: white; border: none; border-radius: 99px;
+    padding: 7px 18px; font-size: 0.82rem; font-weight: 700;
+    cursor: pointer; transition: opacity 0.15s;
+  }
+  .set-add:hover { opacity: 0.85; }
+
+  /* 하단 바 */
   #bottom-bar {
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: var(--pink-deep); color: white;
-    display: none; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    color: white; display: none; align-items: center; justify-content: space-between;
     padding: 14px 24px;
-    box-shadow: 0 -4px 20px rgba(255,143,163,0.3);
-    z-index: 200;
+    box-shadow: 0 -4px 20px rgba(233,30,140,0.3); z-index: 200;
   }
   #bottom-bar.show { display: flex; }
-  #bar-info { font-size: 0.88rem; font-weight: 500; opacity: 0.92; }
-  #bar-total { font-size: 1.05rem; font-weight: 700; }
+  #bar-info { font-size: 0.85rem; font-weight: 500; opacity: 0.9; }
+  #bar-total { font-size: 1.1rem; font-weight: 900; }
   #bar-btn {
-    background: white; color: var(--pink-deep);
+    background: var(--yellow); color: #2a2a2a;
     border: none; border-radius: 99px;
-    padding: 10px 22px; font-size: 0.9rem; font-weight: 700;
+    padding: 10px 22px; font-size: 0.9rem; font-weight: 900;
     cursor: pointer; transition: opacity 0.15s;
   }
   #bar-btn:hover { opacity: 0.85; }
 
-  /* ── 모달 ── */
+  /* 모달 */
   #modal-overlay {
     display: none; position: fixed; inset: 0;
-    background: rgba(0,0,0,0.35); z-index: 300;
+    background: rgba(0,0,0,0.4); z-index: 300;
     align-items: flex-end; justify-content: center;
   }
   #modal-overlay.show { display: flex; }
   #order-modal {
-    background: var(--white); width: 100%; max-width: 520px;
+    background: white; width: 100%; max-width: 520px;
     border-radius: 24px 24px 0 0;
     padding: 24px 20px 32px;
     max-height: 80vh; overflow-y: auto;
   }
   .modal-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem; color: var(--pink-deep);
-    margin-bottom: 16px;
+    font-size: 1.1rem; font-weight: 900; color: var(--pink-deep); margin-bottom: 16px;
   }
   .cart-item {
     display: flex; align-items: center; gap: 10px;
@@ -139,14 +188,11 @@
   .qty-btn:hover { background: var(--pink-light); }
   .qty-num { font-size: 0.83rem; font-weight: 700; min-width: 16px; text-align: center; }
   .cart-item-price { font-size: 0.8rem; font-weight: 700; color: var(--pink-deep); min-width: 56px; text-align: right; }
-
   .modal-total {
     display: flex; justify-content: space-between;
-    font-weight: 700; font-size: 1rem;
-    margin: 14px 0 16px;
+    font-weight: 900; font-size: 1rem; margin: 14px 0 16px;
   }
   .modal-total span:last-child { color: var(--pink-deep); font-size: 1.1rem; }
-
   .account-box {
     background: var(--pink-light); border: 1.5px dashed var(--pink);
     border-radius: 12px; padding: 12px 14px;
@@ -156,7 +202,6 @@
   .account-label { font-size: 0.68rem; color: var(--text-sub); margin-bottom: 3px; }
   .account-num { font-weight: 700; font-size: 0.88rem; }
   .account-copy { font-size: 0.68rem; color: var(--pink-deep); font-weight: 600; margin-top: 4px; }
-
   #modal-close {
     width: 100%; padding: 11px; border: 1.5px solid var(--pink);
     border-radius: 99px; background: white; color: var(--pink-deep);
@@ -167,39 +212,19 @@
   /* Toast */
   .toast {
     position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(12px);
-    background: rgba(255,143,163,0.96); color: white;
-    font-size: 0.82rem; font-weight: 600;
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    color: white; font-size: 0.82rem; font-weight: 600;
     padding: 10px 22px; border-radius: 99px;
     opacity: 0; pointer-events: none; transition: all 0.22s; z-index: 999;
     white-space: nowrap;
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .rules-box {
-    background: var(--white);
-    border-radius: var(--radius);
-    border: 1.5px solid var(--pink-mid);
-    padding: 16px 20px;
-    display: flex; flex-direction: column; gap: 12px;
-    box-shadow: var(--shadow);
-    margin-bottom: 12px;
-  }
-  .rule-item {
-    display: flex; align-items: center; gap: 12px;
-    font-size: 0.88rem; font-weight: 500;
-  }
-  .rule-num {
-    width: 24px; height: 24px; border-radius: 50%;
-    background: var(--pink); color: white;
-    font-size: 0.75rem; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-
   @media (max-width: 680px) {
-    .layout { padding: 16px 12px 100px; }
+    .layout { padding: 20px 14px 110px; }
     header { padding: 14px 16px; }
-    .logo { font-size: 1.4rem; }
+    .logo { font-size: 1.5rem; }
+    .menu-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
   }
 </style>
 </head>
@@ -207,84 +232,160 @@
 
 <header>
   <div class="logo">ENTER<span>.</span></div>
-  <div class="header-sub">메뉴를 선택하고 계좌로 이체해주세요</div>
+  <div class="header-sub">메뉴 선택 후 계좌로 이체해주세요<br>🎉 축제 한정 운영</div>
 </header>
 
 <div class="layout">
 
-  <div class="section-label" style="margin-bottom:8px;">📋 ENTER LOVE 주점 규칙</div>
+  <!-- 규칙 -->
+  <div class="section-label" style="margin-bottom:12px;">📋 ENTER LOVE 주점 규칙</div>
   <div class="rules-box" style="margin-bottom:28px;">
     <div class="rule-item"><span class="rule-num">1</span>테이블당 메뉴 2개 이상 주문 필수</div>
     <div class="rule-item"><span class="rule-num">2</span>이용 시간 2시간 제한</div>
     <div class="rule-item"><span class="rule-num">3</span>마음에 드는 사람 있으면 적극적으로 대시하기 💘</div>
   </div>
 
-  <div class="section-label">☕ Beverage</div>
-  <div class="menu-grid">
+  <!-- 칵테일 -->
+  <div class="section-label">🍹 칵테일</div>
+  <div class="menu-grid" style="margin-top:14px;">
     <div class="menu-card" onclick="addItem(0)">
-      <img src="https://picsum.photos/seed/strawlatte/400/300" alt="딸기 라떼">
+      <img src="https://picsum.photos/seed/bluelemon/400/300" alt="심쿵 블루 레몬 에이드">
       <div class="card-body">
-        <div class="card-name">딸기 라떼</div>
-        <div class="card-desc">신선한 딸기 퓨레</div>
+        <div class="card-name">심쿵 블루 레몬 에이드</div>
+        <div class="card-desc">청량함 폭발! 주점 비주얼 담당 푸른 바다빛 칵테일</div>
         <div class="card-footer">
-          <span class="card-price">6,500원</span>
+          <span class="card-price">5,000원</span>
           <button class="card-add" onclick="event.stopPropagation();addItem(0)">+</button>
         </div>
       </div>
     </div>
-
     <div class="menu-card" onclick="addItem(1)">
-      <img src="https://picsum.photos/seed/roseamo/400/300" alt="로즈 아메리카노">
+      <img src="https://picsum.photos/seed/peachcrush/400/300" alt="첫사랑 피치 크러시">
       <div class="card-body">
-        <div class="card-name">로즈 아메리카노</div>
-        <div class="card-desc">장미 시럽 향기</div>
+        <div class="card-name">첫사랑 피치 크러시</div>
+        <div class="card-desc">달콤한 복숭아 향이 가득, 호불호 없는 베스트셀러</div>
         <div class="card-footer">
-          <span class="card-price">5,000원</span>
+          <span class="card-price">6,000원</span>
           <button class="card-add" onclick="event.stopPropagation();addItem(1)">+</button>
         </div>
       </div>
     </div>
-
     <div class="menu-card" onclick="addItem(2)">
-      <img src="https://picsum.photos/seed/peachsm/400/300" alt="복숭아 스무디">
+      <img src="https://picsum.photos/seed/mojitomint/400/300" alt="몰디브 무알콜 모히토">
       <div class="card-body">
-        <div class="card-name">복숭아 스무디</div>
-        <div class="card-desc">달콤한 복숭아</div>
+        <div class="card-name">몰디브 무알콜 모히토</div>
+        <div class="card-desc">상큼한 라임과 민트의 조화, 프리미엄 목테일</div>
         <div class="card-footer">
-          <span class="card-price">7,000원</span>
+          <span class="card-price">6,000원</span>
           <button class="card-add" onclick="event.stopPropagation();addItem(2)">+</button>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section-label">🍰 Dessert</div>
-  <div class="menu-grid">
+  <!-- 안주 -->
+  <div class="section-label">🍟 안주</div>
+  <div class="menu-grid" style="margin-top:14px;">
     <div class="menu-card" onclick="addItem(3)">
-      <img src="https://picsum.photos/seed/vanillacake/400/300" alt="바닐라 케이크">
+      <img src="https://picsum.photos/seed/nachoplatter/400/300" alt="나초 & 3종 딥 플래터">
       <div class="card-body">
-        <div class="card-name">바닐라 케이크</div>
-        <div class="card-desc">촉촉한 시폰</div>
+        <div class="card-name">나초 & 3종 딥 플래터</div>
+        <div class="card-desc">치즈, 살사, 과카몰리 소스와 즐기는 바삭한 나초</div>
         <div class="card-footer">
-          <span class="card-price">5,500원</span>
+          <span class="card-price">8,000원</span>
           <button class="card-add" onclick="event.stopPropagation();addItem(3)">+</button>
         </div>
       </div>
     </div>
-
     <div class="menu-card" onclick="addItem(4)">
-      <img src="https://picsum.photos/seed/cremebr/400/300" alt="크림 브륄레">
+      <img src="https://picsum.photos/seed/tomatoboc/400/300" alt="꿀 토마토 보코치니">
       <div class="card-body">
-        <div class="card-name">크림 브륄레</div>
-        <div class="card-desc">바삭한 캐러멜</div>
+        <div class="card-name">꿀 토마토 보코치니</div>
+        <div class="card-desc">방울토마토와 동글동글 치즈의 상큼한 만남</div>
         <div class="card-footer">
-          <span class="card-price">6,000원</span>
+          <span class="card-price">10,000원</span>
           <button class="card-add" onclick="event.stopPropagation();addItem(4)">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" onclick="addItem(5)">
+      <img src="https://picsum.photos/seed/bricheese/400/300" alt="전자레인지 브리치즈 구이">
+      <div class="card-body">
+        <div class="card-name">브리치즈 구이</div>
+        <div class="card-desc">견과류와 꿀을 얹어 따뜻하게 즐기는 고급 안주</div>
+        <div class="card-footer">
+          <span class="card-price">12,000원</span>
+          <button class="card-add" onclick="event.stopPropagation();addItem(5)">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" onclick="addItem(6)">
+      <img src="https://picsum.photos/seed/creamcrk/400/300" alt="단짠 크림치즈 크래커">
+      <div class="card-body">
+        <div class="card-name">단짠 크림치즈 크래커</div>
+        <div class="card-desc">멈출 수 없는 중독성, 칵테일과 찰떡궁합 스낵</div>
+        <div class="card-footer">
+          <span class="card-price">8,000원</span>
+          <button class="card-add" onclick="event.stopPropagation();addItem(6)">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" onclick="addItem(7)">
+      <img src="https://picsum.photos/seed/snackbkt/400/300" alt="모둠 건어물 & 스낵 버킷">
+      <div class="card-body">
+        <div class="card-name">모둠 건어물 & 스낵 버킷</div>
+        <div class="card-desc">육포와 프레첼이 담긴 가벼운 2차용 안주</div>
+        <div class="card-footer">
+          <span class="card-price">7,000원</span>
+          <button class="card-add" onclick="event.stopPropagation();addItem(7)">+</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- 세트 메뉴 -->
+  <div class="section-label">🎁 세트 메뉴</div>
+  <div class="set-grid" style="margin-top:14px;">
+    <div class="set-card" onclick="addItem(8)">
+      <div class="set-header">
+        <span class="set-name">2인 [설렘 세트]</span>
+        <span class="set-price">22,000원</span>
+      </div>
+      <div class="set-body">
+        <div class="set-target">💑 둘이서 썸 타기 딱 좋은 구성</div>
+        <div class="set-content">칵테일 2잔 + 크림치즈 크래커 + 쿠피 쿠폰 2매</div>
+        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 2매 증정!</span>
+        <button class="set-add" onclick="event.stopPropagation();addItem(8)">담기 +</button>
+        <div style="clear:both"></div>
+      </div>
+    </div>
+    <div class="set-card" onclick="addItem(9)">
+      <div class="set-header">
+        <span class="set-name">4인 [매칭 세트]</span>
+        <span class="set-price">42,000원</span>
+      </div>
+      <div class="set-body">
+        <div class="set-target">🔥 2:2 합석 시 강력 추천 메뉴!</div>
+        <div class="set-content">칵테일 4잔 + 나초 플래터 + 꿀 토마토 + 쿠피 쿠폰 4매</div>
+        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 4매 증정!</span>
+        <button class="set-add" onclick="event.stopPropagation();addItem(9)">담기 +</button>
+        <div style="clear:both"></div>
+      </div>
+    </div>
+    <div class="set-card" onclick="addItem(10)">
+      <div class="set-header">
+        <span class="set-name">6인 [우정 세트]</span>
+        <span class="set-price">62,000원</span>
+      </div>
+      <div class="set-body">
+        <div class="set-target">🎊 3:3 과팅이나 단체 손님 풀 패키지</div>
+        <div class="set-content">칵테일 6잔 + 나초 + 브리치즈 구이 + 스낵 버킷 + 쿠피 쿠폰 6매</div>
+        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 6매 증정!</span>
+        <button class="set-add" onclick="event.stopPropagation();addItem(10)">담기 +</button>
+        <div style="clear:both"></div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
@@ -319,11 +420,17 @@
 
 <script>
 const MENU = [
-  { name: '딸기 라떼', price: 6500 },
-  { name: '로즈 아메리카노', price: 5000 },
-  { name: '복숭아 스무디', price: 7000 },
-  { name: '바닐라 케이크', price: 5500 },
-  { name: '크림 브륄레', price: 6000 },
+  { name: '심쿵 블루 레몬 에이드', price: 5000 },
+  { name: '첫사랑 피치 크러시', price: 6000 },
+  { name: '몰디브 무알콜 모히토', price: 6000 },
+  { name: '나초 & 3종 딥 플래터', price: 8000 },
+  { name: '꿀 토마토 보코치니', price: 10000 },
+  { name: '브리치즈 구이', price: 12000 },
+  { name: '단짠 크림치즈 크래커', price: 8000 },
+  { name: '모둠 건어물 & 스낵 버킷', price: 7000 },
+  { name: '2인 설렘 세트', price: 22000 },
+  { name: '4인 매칭 세트', price: 42000 },
+  { name: '6인 우정 세트', price: 62000 },
 ];
 const cart = {};
 
