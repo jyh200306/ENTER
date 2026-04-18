@@ -6,370 +6,377 @@
 <title>ENTER</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --pink: #FFB6C1;
+  --deep: #FF8FA3;
+  --light: #FFF0F5;
+  --mid: #FFD6DF;
+  --white: #fff;
+  --text: #3a3a3a;
+  --sub: #aaa;
+}
+body { font-family: 'Noto Sans KR', sans-serif; background: var(--light); min-height: 100vh; }
 
-  :root {
-    --pink: #FFB6C1;
-    --pink-deep: #FF8FA3;
-    --pink-light: #FFF0F5;
-    --pink-mid: #FFD6DF;
-    --white: #ffffff;
-    --text: #3a3a3a;
-    --text-sub: #999;
-    --radius: 18px;
-    --shadow: 0 4px 18px rgba(255,143,163,0.15);
-  }
+/* Header */
+header {
+  background: var(--white);
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--mid);
+  position: sticky; top: 0; z-index: 10;
+  box-shadow: 0 2px 10px rgba(255,182,193,0.15);
+}
+.logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--deep); letter-spacing: 3px; }
+.logo span { color: var(--pink); }
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--pink-light);
-    color: var(--text);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+/* Layout */
+.page {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 16px;
+  align-items: start;
+}
 
-  /* ── Header ── */
-  header {
-    background: var(--white);
-    border-bottom: 1px solid var(--pink-mid);
-    padding: 18px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 12px rgba(255,182,193,0.15);
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.7rem;
-    color: var(--pink-deep);
-    letter-spacing: 3px;
-  }
-  .logo span { color: var(--pink); }
-  .header-sub { font-size: 0.75rem; color: var(--text-sub); }
+/* Left — Menu */
+.menu-side {}
 
-  /* ── Layout ── */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 0;
-    flex: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    width: 100%;
-    padding: 28px 24px;
-    gap: 24px;
-    align-items: start;
-  }
+/* Tab */
+.tabs {
+  display: flex; gap: 6px;
+  margin-bottom: 16px;
+}
+.tab {
+  padding: 7px 16px;
+  border-radius: 99px;
+  border: 1.5px solid var(--mid);
+  background: var(--white);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 0.78rem; font-weight: 700;
+  color: var(--sub); cursor: pointer;
+  transition: all 0.15s;
+}
+.tab.active { background: var(--deep); border-color: var(--deep); color: white; }
 
-  /* ── Menu Side ── */
-  .menu-side { min-width: 0; }
+.section { display: none; }
+.section.active { display: block; }
 
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--pink-deep);
-    text-transform: uppercase;
-    margin: 0 0 12px 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--pink-mid);
-  }
+.sec-label {
+  font-size: 0.68rem; font-weight: 700; color: var(--deep);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 10px;
+}
 
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-    margin-bottom: 28px;
-  }
+/* Menu Card */
+.menu-card {
+  background: var(--white);
+  border-radius: 14px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 12px;
+  margin-bottom: 9px;
+  box-shadow: 0 2px 8px rgba(255,182,193,0.13);
+  border: 2px solid transparent;
+  transition: border-color 0.13s, transform 0.1s;
+  cursor: pointer;
+}
+.menu-card:hover { border-color: var(--pink); }
+.menu-card:active { transform: scale(0.98); }
+.menu-card img {
+  width: 64px; height: 64px;
+  border-radius: 10px; object-fit: cover; flex-shrink: 0;
+}
+.mc-info { flex: 1; min-width: 0; }
+.mc-name { font-weight: 700; font-size: 0.88rem; }
+.mc-desc { font-size: 0.72rem; color: var(--sub); margin-top: 2px; }
+.mc-price { font-weight: 700; font-size: 0.85rem; color: var(--deep); margin-top: 5px; }
+.mc-btn {
+  width: 30px; height: 30px; flex-shrink: 0;
+  border-radius: 50%; border: 1.5px solid var(--pink);
+  background: var(--light); color: var(--deep);
+  font-size: 1.2rem; line-height: 28px; text-align: center;
+  cursor: pointer; transition: background 0.13s;
+}
+.mc-btn:hover { background: var(--pink); color: white; }
 
-  .menu-card {
-    background: var(--white);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    border: 2px solid transparent;
-    position: relative;
-  }
-  .menu-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(255,143,163,0.25);
-    border-color: var(--pink);
-  }
-  .menu-card:active { transform: scale(0.97); }
+/* Rules */
+.rule-card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 8px rgba(255,182,193,0.13);
+}
+.rule-card-title {
+  font-weight: 700; font-size: 0.85rem; color: var(--deep);
+  margin-bottom: 10px;
+}
+.rule-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 7px 0; border-bottom: 1px solid var(--light);
+  font-size: 0.82rem; line-height: 1.5; color: var(--text);
+}
+.rule-row:last-child { border-bottom: none; }
+.rule-n {
+  width: 20px; height: 20px; flex-shrink: 0;
+  border-radius: 50%; background: var(--pink);
+  color: white; font-size: 0.65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
 
-  .menu-card img {
-    width: 100%; aspect-ratio: 4/3;
-    object-fit: cover;
-    display: block;
-  }
-  .card-body { padding: 12px 14px 14px; }
-  .card-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
-  .card-desc { font-size: 0.72rem; color: var(--text-sub); margin-top: 3px; }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 10px;
-  }
-  .card-price { font-weight: 700; font-size: 0.95rem; color: var(--pink-deep); }
-  .card-add {
-    width: 30px; height: 30px;
-    background: var(--pink-light);
-    border: 1.5px solid var(--pink);
-    border-radius: 50%;
-    color: var(--pink-deep);
-    font-size: 1.2rem;
-    line-height: 28px; text-align: center;
-    cursor: pointer;
-    transition: background 0.15s;
-    flex-shrink: 0;
-  }
-  .card-add:hover { background: var(--pink); color: white; }
+/* Right — Cart */
+.cart-box {
+  position: sticky; top: 74px;
+  background: var(--white);
+  border-radius: 16px;
+  border: 1.5px solid var(--mid);
+  box-shadow: 0 4px 16px rgba(255,182,193,0.15);
+  overflow: hidden;
+}
+.cart-head {
+  background: linear-gradient(135deg, var(--deep), #ff6b8a);
+  padding: 12px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cart-head-title { font-weight: 700; font-size: 0.88rem; color: white; }
+.cart-badge {
+  background: white; color: var(--deep);
+  border-radius: 99px; padding: 1px 9px;
+  font-size: 0.7rem; font-weight: 700;
+}
 
-  /* ── Cart Side ── */
-  .cart-side {
-    position: sticky;
-    top: 90px;
-    background: var(--white);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 20px;
-    border: 1.5px solid var(--pink-mid);
-  }
+.cart-body { padding: 8px 14px; max-height: 320px; overflow-y: auto; }
 
-  .cart-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    color: var(--pink-deep);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .cart-count {
-    background: var(--pink);
-    color: white;
-    border-radius: 99px;
-    padding: 1px 9px;
-    font-size: 0.72rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 700;
-  }
+.cart-empty {
+  text-align: center; padding: 24px 0;
+  color: var(--mid); font-size: 0.82rem;
+}
 
-  .cart-empty {
-    text-align: center;
-    padding: 30px 0;
-    color: var(--pink-mid);
-    font-size: 0.85rem;
-  }
-  .cart-empty .icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+.cart-row {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--light);
+  font-size: 0.78rem;
+}
+.cart-row:last-child { border-bottom: none; }
+.cr-name { flex: 1; font-weight: 500; font-size: 0.78rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.qc { display: flex; align-items: center; gap: 5px; }
+.qb {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid var(--pink); background: white;
+  color: var(--deep); font-size: 0.9rem;
+  line-height: 18px; text-align: center; cursor: pointer; flex-shrink: 0;
+}
+.qb:hover { background: var(--light); }
+.cr-price { font-weight: 700; color: var(--deep); font-size: 0.75rem; min-width: 48px; text-align: right; }
 
-  .cart-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--pink-light);
-  }
-  .cart-item-name { flex: 1; font-size: 0.83rem; font-weight: 500; }
-  .qty-ctrl { display: flex; align-items: center; gap: 6px; }
-  .qty-btn {
-    width: 22px; height: 22px;
-    border: 1.5px solid var(--pink);
-    border-radius: 50%;
-    background: white;
-    color: var(--pink-deep);
-    font-size: 0.95rem;
-    line-height: 20px; text-align: center;
-    cursor: pointer;
-  }
-  .qty-btn:hover { background: var(--pink-light); }
-  .qty-num { font-size: 0.83rem; font-weight: 700; min-width: 16px; text-align: center; }
-  .cart-item-price {
-    font-size: 0.8rem; font-weight: 700;
-    color: var(--pink-deep);
-    min-width: 56px; text-align: right;
-  }
+.cart-foot { padding: 10px 14px 14px; }
+.total-row {
+  display: flex; justify-content: space-between;
+  font-weight: 700; font-size: 0.9rem;
+  margin-bottom: 12px;
+  padding-top: 8px;
+  border-top: 1.5px solid var(--mid);
+}
+.total-row span:last-child { color: var(--deep); }
 
-  .cart-divider { height: 1px; background: var(--pink-mid); margin: 12px 0; }
+.account-box {
+  background: var(--light);
+  border: 1.5px dashed var(--pink);
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.13s;
+}
+.account-box:hover { background: var(--mid); }
+.ac-label { font-size: 0.65rem; color: var(--sub); margin-bottom: 2px; }
+.ac-num { font-weight: 700; font-size: 0.85rem; color: var(--text); }
+.ac-hint { font-size: 0.62rem; color: var(--deep); font-weight: 600; margin-top: 3px; }
 
-  .cart-total {
-    display: flex; justify-content: space-between; align-items: center;
-    font-weight: 700; font-size: 1rem;
-    margin-bottom: 16px;
-  }
-  .cart-total-price { color: var(--pink-deep); font-size: 1.15rem; }
+/* Toast */
+.toast {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: rgba(255,143,163,0.95); color: white;
+  padding: 9px 20px; border-radius: 99px;
+  font-size: 0.8rem; font-weight: 600;
+  opacity: 0; pointer-events: none; z-index: 999;
+  transition: all 0.2s; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  /* Account */
-  .account-box {
-    background: var(--pink-light);
-    border: 1.5px dashed var(--pink);
-    border-radius: 12px;
-    padding: 12px 14px;
-    cursor: pointer;
-    transition: background 0.15s;
-    margin-top: 4px;
+/* Mobile */
+@media (max-width: 640px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding: 14px 12px 160px;
   }
-  .account-box:hover { background: var(--pink-mid); }
-  .account-label { font-size: 0.68rem; color: var(--text-sub); margin-bottom: 3px; }
-  .account-num { font-weight: 700; font-size: 0.88rem; color: var(--text); }
-  .account-copy {
-    font-size: 0.68rem; color: var(--pink-deep);
-    font-weight: 600; margin-top: 4px;
+  .cart-box {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    border-radius: 18px 18px 0 0;
+    top: auto; max-height: 50vh;
+    overflow-y: auto;
+    z-index: 20;
+    box-shadow: 0 -4px 20px rgba(255,182,193,0.25);
   }
-
-  /* Toast */
-  .toast {
-    position: fixed;
-    bottom: 32px; left: 50%; transform: translateX(-50%) translateY(12px);
-    background: rgba(255,143,163,0.96);
-    color: white; font-size: 0.82rem; font-weight: 600;
-    padding: 10px 22px; border-radius: 99px;
-    opacity: 0; pointer-events: none;
-    transition: all 0.22s;
-    z-index: 999;
-    white-space: nowrap;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  /* Responsive */
-  @media (max-width: 680px) {
-    .layout { grid-template-columns: 1fr; padding: 16px 12px 160px; }
-    .cart-side {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      border-radius: 20px 20px 0 0; top: auto;
-      max-height: 55vh; overflow-y: auto;
-      z-index: 50;
-    }
-    header { padding: 14px 16px; }
-    .logo { font-size: 1.4rem; }
-  }
+  .cart-body { max-height: 160px; }
+}
 </style>
 </head>
 <body>
 
 <header>
   <div class="logo">ENTER<span>.</span></div>
-  <div class="header-sub">메뉴를 선택하고 계좌로 이체해주세요</div>
 </header>
 
-<div class="layout">
+<div class="page">
 
-  <!-- ── Menu ── -->
+  <!-- 메뉴 좌측 -->
   <div class="menu-side">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'food')">🍽 요리</button>
+      <button class="tab" onclick="switchTab(this,'cocktail')">🍸 칵테일</button>
+      <button class="tab" onclick="switchTab(this,'rules')">📋 주점 규칙</button>
+    </div>
 
-    <div class="section-label">☕ Beverage</div>
-    <div class="menu-grid">
+    <!-- 요리 -->
+    <div class="section active" id="tab-food">
+      <div class="sec-label">요리</div>
+
       <div class="menu-card" onclick="addItem(0)">
-        <img src="https://picsum.photos/seed/strawlatte/400/300" alt="딸기 라떼">
-        <div class="card-body">
-          <div class="card-name">딸기 라떼</div>
-          <div class="card-desc">신선한 딸기 퓨레</div>
-          <div class="card-footer">
-            <span class="card-price">6,500원</span>
-            <button class="card-add" onclick="event.stopPropagation();addItem(0)">+</button>
-          </div>
+        <img src="https://picsum.photos/seed/salmon11/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">연어 카르파초</div>
+          <div class="mc-desc">신선한 노르웨이 연어</div>
+          <div class="mc-price">18,000원</div>
         </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(0)">+</button>
       </div>
 
       <div class="menu-card" onclick="addItem(1)">
-        <img src="https://picsum.photos/seed/roseamo/400/300" alt="로즈 아메리카노">
-        <div class="card-body">
-          <div class="card-name">로즈 아메리카노</div>
-          <div class="card-desc">장미 시럽 향기</div>
-          <div class="card-footer">
-            <span class="card-price">5,000원</span>
-            <button class="card-add" onclick="event.stopPropagation();addItem(1)">+</button>
-          </div>
+        <img src="https://picsum.photos/seed/cheese22/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">치즈 플레이트</div>
+          <div class="mc-desc">4종 수입 치즈 모음</div>
+          <div class="mc-price">16,000원</div>
         </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(1)">+</button>
       </div>
 
       <div class="menu-card" onclick="addItem(2)">
-        <img src="https://picsum.photos/seed/peachsm/400/300" alt="복숭아 스무디">
-        <div class="card-body">
-          <div class="card-name">복숭아 스무디</div>
-          <div class="card-desc">달콤한 복숭아</div>
-          <div class="card-footer">
-            <span class="card-price">7,000원</span>
-            <button class="card-add" onclick="event.stopPropagation();addItem(2)">+</button>
-          </div>
+        <img src="https://picsum.photos/seed/shrimp33/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">갈릭 새우</div>
+          <div class="mc-desc">버터 갈릭 소스</div>
+          <div class="mc-price">22,000원</div>
         </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(2)">+</button>
+      </div>
+
+      <div class="menu-card" onclick="addItem(3)">
+        <img src="https://picsum.photos/seed/fries44/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">트러플 감자튀김</div>
+          <div class="mc-desc">트러플 오일 마무리</div>
+          <div class="mc-price">12,000원</div>
+        </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(3)">+</button>
       </div>
     </div>
 
-    <div class="section-label">🍰 Dessert</div>
-    <div class="menu-grid">
-      <div class="menu-card" onclick="addItem(3)">
-        <img src="https://picsum.photos/seed/vanillacake/400/300" alt="바닐라 케이크">
-        <div class="card-body">
-          <div class="card-name">바닐라 케이크</div>
-          <div class="card-desc">촉촉한 시폰</div>
-          <div class="card-footer">
-            <span class="card-price">5,500원</span>
-            <button class="card-add" onclick="event.stopPropagation();addItem(3)">+</button>
-          </div>
-        </div>
-      </div>
+    <!-- 칵테일 -->
+    <div class="section" id="tab-cocktail">
+      <div class="sec-label">칵테일</div>
 
       <div class="menu-card" onclick="addItem(4)">
-        <img src="https://picsum.photos/seed/cremebr/400/300" alt="크림 브륄레">
-        <div class="card-body">
-          <div class="card-name">크림 브륄레</div>
-          <div class="card-desc">바삭한 캐러멜</div>
-          <div class="card-footer">
-            <span class="card-price">6,000원</span>
-            <button class="card-add" onclick="event.stopPropagation();addItem(4)">+</button>
-          </div>
+        <img src="https://picsum.photos/seed/marg55/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">딸기 마르가리타</div>
+          <div class="mc-desc">달콤 새콤 딸기 베이스</div>
+          <div class="mc-price">13,000원</div>
         </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(4)">+</button>
+      </div>
+
+      <div class="menu-card" onclick="addItem(5)">
+        <img src="https://picsum.photos/seed/blue66/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">블루 하와이</div>
+          <div class="mc-desc">트로피컬 블루큐라소</div>
+          <div class="mc-price">14,000원</div>
+        </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(5)">+</button>
+      </div>
+
+      <div class="menu-card" onclick="addItem(6)">
+        <img src="https://picsum.photos/seed/mojito77/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">복숭아 모히토</div>
+          <div class="mc-desc">민트 & 복숭아</div>
+          <div class="mc-price">13,000원</div>
+        </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(6)">+</button>
+      </div>
+
+      <div class="menu-card" onclick="addItem(7)">
+        <img src="https://picsum.photos/seed/spritz88/200/200" alt="">
+        <div class="mc-info">
+          <div class="mc-name">로즈 스프리츠</div>
+          <div class="mc-desc">아페롤 & 로제 스파클링</div>
+          <div class="mc-price">14,000원</div>
+        </div>
+        <button class="mc-btn" onclick="event.stopPropagation();addItem(7)">+</button>
       </div>
     </div>
 
+    <!-- 규칙 -->
+    <div class="section" id="tab-rules">
+      <div class="sec-label">ENTER LOVE 주점 규칙</div>
+
+      <div class="rule-card">
+        <div class="rule-card-title">🌸 입장 & 주문</div>
+        <div class="rule-row"><div class="rule-n">1</div><div>1인 1음료 이상 주문 필수입니다.</div></div>
+        <div class="rule-row"><div class="rule-n">2</div><div>외부 음식 및 음료 반입이 금지됩니다.</div></div>
+        <div class="rule-row"><div class="rule-n">3</div><div>마감 30분 전(23:30) 주문이 마감됩니다.</div></div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-card-title">💳 결제 안내</div>
+        <div class="rule-row"><div class="rule-n">1</div><div>결제는 계좌 이체로만 가능합니다.</div></div>
+        <div class="rule-row"><div class="rule-n">2</div><div>이체 시 입금자명을 정확히 입력해주세요.</div></div>
+        <div class="rule-row"><div class="rule-n">3</div><div>영수증이 필요하신 분은 스태프에게 문의해주세요.</div></div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-card-title">🎀 이용 매너</div>
+        <div class="rule-row"><div class="rule-n">1</div><div>다른 손님을 배려하여 과도한 소음을 자제해주세요.</div></div>
+        <div class="rule-row"><div class="rule-n">2</div><div>분실물에 대한 책임은 지지 않습니다.</div></div>
+        <div class="rule-row"><div class="rule-n">3</div><div>취한 상태의 입장 및 추가 주문은 거절될 수 있습니다.</div></div>
+      </div>
+    </div>
   </div>
 
-  <!-- ── Cart ── -->
-  <div class="cart-side">
-    <div class="cart-title">
-      🛒 담은 메뉴
-      <span class="cart-count" id="badge">0</span>
+  <!-- 장바구니 우측 -->
+  <div class="cart-box">
+    <div class="cart-head">
+      <span class="cart-head-title">🛒 담은 메뉴</span>
+      <span class="cart-badge" id="badge">0</span>
     </div>
 
-    <div id="cart-list">
-      <div class="cart-empty">
-        <span class="icon">🌷</span>
-        메뉴를 선택해주세요
-      </div>
+    <div class="cart-body" id="cart-list">
+      <div class="cart-empty">🌷 메뉴를 선택해주세요</div>
     </div>
 
-    <div id="cart-summary" style="display:none">
-      <div class="cart-divider"></div>
-      <div class="cart-total">
+    <div class="cart-foot">
+      <div class="total-row">
         <span>합계</span>
-        <span class="cart-total-price" id="total">0원</span>
+        <span id="total">0원</span>
       </div>
       <div class="account-box" onclick="copyAccount()">
-        <div class="account-label">💳 토스뱅크 · 정연호</div>
-        <div class="account-num">3333-01-1234567</div>
-        <div class="account-copy">탭하여 계좌번호 복사 →</div>
-      </div>
-    </div>
-
-    <div id="cart-summary-empty">
-      <div class="cart-divider"></div>
-      <div class="account-box" onclick="copyAccount()">
-        <div class="account-label">💳 토스뱅크 · 정연호</div>
-        <div class="account-num">3333-01-1234567</div>
-        <div class="account-copy">탭하여 계좌번호 복사 →</div>
+        <div class="ac-label">💳 카카오뱅크 · 홍길동</div>
+        <div class="ac-num">3333-01-1234567</div>
+        <div class="ac-hint">탭하여 계좌번호 복사 →</div>
       </div>
     </div>
   </div>
@@ -380,54 +387,57 @@
 
 <script>
 const MENU = [
-  { name: '딸기 라떼', price: 6500 },
-  { name: '로즈 아메리카노', price: 5000 },
-  { name: '복숭아 스무디', price: 7000 },
-  { name: '바닐라 케이크', price: 5500 },
-  { name: '크림 브륄레', price: 6000 },
+  { name: '연어 카르파초', price: 18000 },
+  { name: '치즈 플레이트', price: 16000 },
+  { name: '갈릭 새우', price: 22000 },
+  { name: '트러플 감자튀김', price: 12000 },
+  { name: '딸기 마르가리타', price: 13000 },
+  { name: '블루 하와이', price: 14000 },
+  { name: '복숭아 모히토', price: 13000 },
+  { name: '로즈 스프리츠', price: 14000 },
 ];
 const cart = {};
 
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
 function addItem(idx) {
   cart[idx] = (cart[idx] || 0) + 1;
-  renderCart();
+  render();
   showToast(MENU[idx].name + ' 담았어요 🌸');
 }
 
-function changeQty(idx, delta) {
-  cart[idx] = (cart[idx] || 0) + delta;
+function changeQty(idx, d) {
+  cart[idx] = (cart[idx] || 0) + d;
   if (cart[idx] <= 0) delete cart[idx];
-  renderCart();
+  render();
 }
 
-function renderCart() {
+function render() {
   const keys = Object.keys(cart);
   const count = keys.reduce((s, k) => s + cart[k], 0);
   document.getElementById('badge').textContent = count;
 
   const list = document.getElementById('cart-list');
-  const summary = document.getElementById('cart-summary');
-  const summaryEmpty = document.getElementById('cart-summary-empty');
-
-  if (keys.length === 0) {
-    list.innerHTML = '<div class="cart-empty"><span class="icon">🌷</span>메뉴를 선택해주세요</div>';
-    summary.style.display = 'none';
-    summaryEmpty.style.display = 'block';
+  if (!keys.length) {
+    list.innerHTML = '<div class="cart-empty">🌷 메뉴를 선택해주세요</div>';
+    document.getElementById('total').textContent = '0원';
     return;
   }
 
-  summary.style.display = 'block';
-  summaryEmpty.style.display = 'none';
-
   list.innerHTML = keys.map(k => `
-    <div class="cart-item">
-      <span class="cart-item-name">${MENU[k].name}</span>
-      <div class="qty-ctrl">
-        <button class="qty-btn" onclick="changeQty(${k},-1)">−</button>
-        <span class="qty-num">${cart[k]}</span>
-        <button class="qty-btn" onclick="changeQty(${k},1)">+</button>
+    <div class="cart-row">
+      <span class="cr-name">${MENU[k].name}</span>
+      <div class="qc">
+        <button class="qb" onclick="changeQty(${k},-1)">−</button>
+        <span style="font-size:.78rem;font-weight:700;min-width:14px;text-align:center">${cart[k]}</span>
+        <button class="qb" onclick="changeQty(${k},1)">+</button>
       </div>
-      <span class="cart-item-price">${(MENU[k].price * cart[k]).toLocaleString()}원</span>
+      <span class="cr-price">${(MENU[k].price*cart[k]).toLocaleString()}원</span>
     </div>`).join('');
 
   const sum = keys.reduce((s, k) => s + MENU[k].price * cart[k], 0);
@@ -435,11 +445,9 @@ function renderCart() {
 }
 
 function copyAccount() {
-  navigator.clipboard.writeText('3333-01-1234567').then(() => {
-    showToast('계좌번호 복사 완료! 💕');
-  }).catch(() => {
-    showToast('계좌: 3333-01-1234567');
-  });
+  navigator.clipboard.writeText('3333-01-1234567')
+    .then(() => showToast('계좌번호 복사 완료! 💕'))
+    .catch(() => showToast('계좌: 3333-01-1234567'));
 }
 
 function showToast(msg) {
