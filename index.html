@@ -69,6 +69,20 @@
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
 
+  /* 합석 이벤트 */
+  .event-box {
+    background: linear-gradient(90deg, var(--pink-deep), var(--purple));
+    border-radius: 12px; padding: 12px 16px;
+    margin-top: 4px;
+  }
+  .event-title {
+    font-size: 1rem; font-weight: 900; color: var(--yellow);
+    letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .event-desc {
+    font-size: 0.85rem; font-weight: 600; color: white; line-height: 1.6;
+  }
+
   /* 메뉴 그리드 */
   .menu-grid {
     display: grid;
@@ -243,7 +257,10 @@
     <div class="rule-item"><span class="rule-num">1</span>테이블당 메뉴 2개 이상 주문 필수</div>
     <div class="rule-item"><span class="rule-num">2</span>이용 시간 2시간 제한</div>
     <div class="rule-item"><span class="rule-num">3</span>마음에 드는 사람 있으면 적극적으로 대시하기 💘</div>
-    <div class="rule-item"><span class="rule-num">💘합석 이벤트💘</span>합석한 전원에게 쿠피 카페 쿠폰 증정(합석 시 인원수에 맞는 세트 메뉴 주문 필수)</div>
+    <div class="event-box">
+      <div class="event-title">💘 합석 이벤트 💘</div>
+      <div class="event-desc">합석한 전원에게 쿠피 카페 쿠폰 증정<br><span style="font-size:0.75rem;opacity:0.85;">※ 합석 시 인원수에 맞는 세트 메뉴 주문 필수</span></div>
+    </div>
   </div>
 
   <!-- 칵테일 -->
@@ -355,7 +372,7 @@
       <div class="set-body">
         <div class="set-target">💑 둘이서 썸 타기 딱 좋은 구성</div>
         <div class="set-content">칵테일 2잔 + 크림치즈 크래커 + 쿠피 쿠폰 2매</div>
-        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 2매 증정!</span>
+        <span class="set-coupon">☕ 카페 쿠피 쿠폰 2매 증정!</span>
         <button class="set-add" onclick="event.stopPropagation();addItem(8)">담기 +</button>
         <div style="clear:both"></div>
       </div>
@@ -368,7 +385,7 @@
       <div class="set-body">
         <div class="set-target">🔥 2:2 합석 시 강력 추천 메뉴!</div>
         <div class="set-content">칵테일 4잔 + 나초 플래터 + 꿀 토마토 + 쿠피 쿠폰 4매</div>
-        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 4매 증정!</span>
+        <span class="set-coupon">☕ 카페 쿠피 쿠폰 4매 증정!</span>
         <button class="set-add" onclick="event.stopPropagation();addItem(9)">담기 +</button>
         <div style="clear:both"></div>
       </div>
@@ -381,7 +398,7 @@
       <div class="set-body">
         <div class="set-target">🎊 3:3 과팅이나 단체 손님 풀 패키지</div>
         <div class="set-content">칵테일 6잔 + 나초 + 브리치즈 구이 + 스낵 버킷 + 쿠피 쿠폰 6매</div>
-        <span class="set-coupon">☕ 쿠피(Koopi) 카페 쿠폰 6매 증정!</span>
+        <span class="set-coupon">☕ 카페 쿠피 쿠폰 6매 증정!</span>
         <button class="set-add" onclick="event.stopPropagation();addItem(10)">담기 +</button>
         <div style="clear:both"></div>
       </div>
